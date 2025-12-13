@@ -91,6 +91,14 @@ export default function Home() {
                 Sunil Biriya
               </span>
             </motion.h1>
+
+            <motion.p className="mt-6 text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto lg:mx-0"
+            initial={{opacity: 0, y: 20}}
+            animate={{opacity: 1, y:0}}
+            transition={{delay: 0.4, duration:0.8}}
+            >
+              I design and develop scalable web applications using modern frameworks. I also work independently in data analysis, applying analytical methods to interpret information and deliver insights.
+            </motion.p>
           </div>
         </div>
       </div>
