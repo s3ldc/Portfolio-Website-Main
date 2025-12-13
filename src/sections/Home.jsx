@@ -1,9 +1,39 @@
 import { useState, useMemo, useEffect } from "react";
 import ParticlesBackground from "../components/ParticlesBackground";
 import { motion } from "framer-motion";
+import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
+
+const socials = [
+  {
+    Icon: FaInstagram,
+    label: "Instagram",
+    link: "https://www.instagram.com/s3l__dc?igsh=b210ZnkzY21jY3lk",
+  },
+  {
+    Icon: FaLinkedin,
+    label: "LinkedIn",
+    link: "https://www.linkedin.com/in/sunil-biriya/",
+  },
+  { Icon: FaGithub, 
+    label: "GitHub", 
+    link: "https://github.com/s3ldc" 
+  },
+];
+
+const glowVariants = {
+  initial: { scale: 1, y: 0, filter: "drop-shadow(0 0 0 rgba(0,0,0,0))" },
+  hover: {
+    scale: 1.2,
+    y: -3,
+    filter:
+      "drop-shadow(0 0 8px rgba(13, 88, 204, 0.9)) drop-shadow(0 0 18px rgba(16,185,129,0.8))",
+    transition: { type: "spring", stiffness: 300, damping: 15 },
+  },
+  tap: { scale: 0.95, y: 0, transition: { duration: 0.08 } },
+};
 
 export default function Home() {
-  const roles = useMemo(() => ["Web Developer", "Data Analyst"]);
+  const roles = useMemo(() => ["Web Developer", "Data Analyst",],[]);
 
   const [index, setIndex] = useState(0);
   const [subIndex, setSubIndex] = useState(0);
@@ -78,13 +108,13 @@ export default function Home() {
               ></span>
             </motion.div>
 
-            <motion.h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text 
+            <motion.h1
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text 
             bg-gradient-to-r from-[#1cd8d2] via-[#00bf8f] to-[#302b63] drop-shadow-lg"
-            initial={{opacity:0, y:40}}
-            animate={{opacity:1, y:0}}
-            transition={{duration:1}}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
             >
-
               Hello I'm
               <br />
               <span className="text-white font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl lg:whitespace-nowrap">
@@ -92,13 +122,58 @@ export default function Home() {
               </span>
             </motion.h1>
 
-            <motion.p className="mt-6 text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto lg:mx-0"
-            initial={{opacity: 0, y: 20}}
-            animate={{opacity: 1, y:0}}
-            transition={{delay: 0.4, duration:0.8}}
+            <motion.p
+              className="mt-6 text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto lg:mx-0"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
             >
-              I design and develop scalable web applications using modern frameworks. I also work independently in data analysis, applying analytical methods to interpret information and deliver insights.
+              I build reliable, user-focused web solutions. I also perform
+              structured data analysis to support informed decision-making.
             </motion.p>
+
+            <motion.div
+              className="mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-6 "
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8, duration: 0.8 }}
+            >
+              <a
+                href="#projects"
+                className="px-6 py-3 rounded-full font-medium text-lg text-white 
+              bg-gradient-to-r from-[#1cd8d2] via-[#00bf8f] to-[#302b63]
+              shadow-lg hover:scale-105 transition-all"
+              >
+                View My Work
+              </a>
+
+              <a
+                href="/Resume.pdf"
+                download
+                className="px-6 py-3 rounded-full text-lg font-medium text-black bg-white hover:bg-gray-200 shadow-lg hover:scale-105 transition-all"
+              >
+                My Resume
+              </a>
+            </motion.div>
+
+            <div className="mt-10 flex gap-5 text-2xl md:text-3xl justify-center lg:justify-start">
+              {socials.map(({ Icon, label, link }) => (
+                <motion.a
+                  href={link}
+                  key={label}
+                  target="_blank"
+                  aria-label={label}
+                  rel="noopener noreferrer"
+                  variants={glowVariants}
+                  initial="initial"
+                  whileHover="hover"
+                  whileTap="tap"
+                  className="text-gray-300"
+                >
+                  <Icon />
+                </motion.a>
+              ))}
+            </div>
           </div>
         </div>
       </div>
