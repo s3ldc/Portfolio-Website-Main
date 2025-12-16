@@ -15,10 +15,7 @@ const socials = [
     label: "LinkedIn",
     link: "https://www.linkedin.com/in/sunil-biriya/",
   },
-  { Icon: FaGithub, 
-    label: "GitHub", 
-    link: "https://github.com/s3ldc" 
-  },
+  { Icon: FaGithub, label: "GitHub", link: "https://github.com/s3ldc" },
 ];
 
 const glowVariants = {
@@ -34,7 +31,7 @@ const glowVariants = {
 };
 
 export default function Home() {
-  const roles = useMemo(() => ["Web Developer", "Data Analyst",],[]);
+  const roles = useMemo(() => ["Web Developer", "Data Analyst"], []);
 
   const [index, setIndex] = useState(0);
   const [subIndex, setSubIndex] = useState(0);
@@ -116,7 +113,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
             >
-              Hello I'm
+              Hello, I'm
               <br />
               <span className="text-white font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl lg:whitespace-nowrap">
                 Sunil Biriya
@@ -180,23 +177,30 @@ export default function Home() {
 
         <div className="relative hidden lg:block">
           <div
-          className="absolute top-1/2 -translate-y-1/2 pointer-events-none"
-          style={{
-            right: "10px", width: "min(22vw, 410px)", height: "min(40vw, 760px)", borderRadius: "50%",
-            filter: "blur(38px)", opacity: 0.32,
-            background: "conic-gradient(from 0deg, #1cd8d2, #00bf8f, #302b63, #1cd8d2)"
-          }}
-          
+            className="absolute top-1/2 -translate-y-1/2 pointer-events-none"
+            style={{
+              right: "10px",
+              width: "min(22vw, 410px)",
+              height: "min(40vw, 760px)",
+              borderRadius: "50%",
+              filter: "blur(38px)",
+              opacity: 0.32,
+              background:
+                "conic-gradient(from 0deg, #1cd8d2, #00bf8f, #302b63, #1cd8d2)",
+            }}
           />
-          <motion.img src={avator} alt="Sunil Biriya"
-          className="absolute top-1/2 -translate-y-1/2 object-contain select-none pointer-events-none"
-          style={{
-            right: "-30px", width: "min(45vw, 780px)", maxHeight: "90vh"
-          }}
-          initial={{opacity:0, y:40, scale:0.98}}
-          animate={{opacity:1, y:0, scale: 1}}
-          transition={{delay:0.2, duration: 0.8}}
-          
+          <motion.img
+            src={avator}
+            alt="Sunil Biriya"
+            className="absolute top-1/2 -translate-y-1/2 object-contain select-none pointer-events-none"
+            style={{
+              right: "-30px",
+              width: "min(45vw, 780px)",
+              maxHeight: "90vh",
+            }}
+            initial={{ opacity: 0, y: 40, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
           />
         </div>
       </div>
