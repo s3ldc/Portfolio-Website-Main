@@ -37,7 +37,10 @@ const glows = [
 
         <motion.div className="relative w-[160px] h-[160px] md:w-[200px] h-[200px]
         rounded-2xl overflow-hidden shadow-2xl bg-gradient-tobr from-[#1cd8d2]/20 to-[#302b63]/20 border border-[#1cd8d2]/25
-        ">
+        "
+        whileHover={{scale:1.02}}
+        transition={{type:"spring", stiffness:200, damping:18}}
+        >
 
           <img src={profile} alt="profile" className="absolute inset-0"/>
         </motion.div>
@@ -54,7 +57,7 @@ const glows = [
           </p>
 
           <p className="mt-4 text-gray-300 leading-relaxed text-base sm:text-lg max-w-2xl md:max-w-3xl">
-            I build scalable, modern applications with a strong focus on clean architecture, delightful UX, and performance. My toolkit spans Java, React, Next.js, TypeScript, Tailwind CSS, and FastAPI—bringing ideas to life from concept to production with robust APIs and smooth interfaces.
+            I build scalable, modern applications with a strong focus on clean architecture, delightful UX, and performance. My toolkit spans Python, React, SvelteKit, JavaScript, Tailwind CSS, and FastAPI—bringing ideas to life from concept to production with robust APIs and smooth interfaces.
           </p>
 
           <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 max-w-xl">
@@ -70,8 +73,30 @@ const glows = [
               </motion.div>
             ))}
           </div>
+
+          <div className="mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start">
+            <a href="#projects" className="inline-flex items-center justify-center rounded-lg bg-white text-black font-semibold px-5 py-3 hover:bg-gray-200 transition">View Projects</a>
+            <a href="#contact" className="inline-flex items-center justify-center rounded-lg border border-white/20 bg-white/10 text-white px-5 py-3 hover:bg-white/20 transition">Get in Touch</a>
+          </div>
         </div>
         
+      </motion.div>
+
+      <motion.div className="text-center md:text-left"
+      initial={{opacity:0, x:-30}}
+      whileInView={{opacity:1, x:0}}
+      transition={{duration:0.6}}
+      viewport={{once:true, amount:0.4}}
+      >
+            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3">
+              About Me
+            </h3>
+            <p className="text-gray-300 leading-relaxed text-base sm:text-lg">
+              Software Developer and Web Developer with a strong interest in data analysis, focused on building efficient web applications and extracting insights through Python, SQL, and Power BI.
+              </p>
+            <p className="mt-4 text-gray-400 text-base sm:text-lg">
+              I love turning ideas into scalable, user‑friendly products that make an impact.
+              </p>
       </motion.div>
 
      </div>
