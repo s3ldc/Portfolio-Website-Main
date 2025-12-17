@@ -5,6 +5,12 @@ import profile from "../assets/p.png";
 
 export default function About(){
 
+  const stats = [
+    {label: "Experience", value:"1+ Years"},
+    {label: "Speciality", value:"Web Development"},
+    {label: "Focus", value:"Performance and Analysis"},
+  ]
+
 const glows = [
   "-top-10 -left-10 w-[360px] h-[360px] opacity-20 blur-[120px]",
   "bottom-0 right-10 w-[420px] h-[420px] opacity-15 blur-[140px] delay-300",
@@ -50,6 +56,20 @@ const glows = [
           <p className="mt-4 text-gray-300 leading-relaxed text-base sm:text-lg max-w-2xl md:max-w-3xl">
             I build scalable, modern applications with a strong focus on clean architecture, delightful UX, and performance. My toolkit spans Java, React, Next.js, TypeScript, Tailwind CSS, and FastAPI—bringing ideas to life from concept to production with robust APIs and smooth interfaces.
           </p>
+
+          <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 max-w-xl">
+            {stats.map((item, i) => (
+              <motion.div key={i} className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center"
+              initial={{opacity: 0, y: 10}}
+              whileInView={{opacity:1, y:0}}
+              transition={{delay:0.05 * i, duration:0.4}}
+              viewport={{once:true, amount:0.3}}
+              >
+            <div className="text-sm text-gray-400 ">{item.label}</div>
+            <div className="text-base font-semibold">{item.value}</div>
+              </motion.div>
+            ))}
+          </div>
         </div>
         
       </motion.div>
