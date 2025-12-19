@@ -33,18 +33,18 @@ export default function Projects(){
     {
       title: "Tumor Detection",
       link: "https://github.com/s3ldc/BrainTumorDetection",
-      bgColor: "#0B2F3A",
+      bgColor: "#1A1433",
       image: isMobile ? photo1 : img1
     },
     {
       title: "Student Management",
       link: "https://github.com/s3ldc/StudentManagementSystem",
-      bgColor: "#0F172A",
+      bgColor: "#1F2933",
       image: isMobile ? photo2 : img2
     },{
       title: "Analysis Dashboard",
       link: "https://github.com/s3ldc/Road-Accident-Analysis",
-      bgColor: "#1E293B",
+      bgColor: "#0E1A2B",
       image: isMobile ? photo3 : img3
     },
   ],
@@ -115,7 +115,37 @@ const activeProject = projects[activeIndex];
               )}
             </AnimatePresence>
 
-            
+              <div className={`relative w-full overflow-hidden bg-black/20 shadow-2xl md:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.7)]${
+                isMobile ? "mb-6 rounded-lg" : "mb-10 sm:mb-12 rounded-xl"
+                }
+                h-[62vh] sm:h-[66vh]`}
+                
+                style={{
+                  zIndex: 10,
+                  transition: "box-shadow 250ms ease"
+                }}
+                >
+                <img src={project.image} alt={project.title}
+                className="w-full h-full object-cover drop-shadow-xl md:drop-shadow-2xl"
+                style={{
+                  position: 'relative',
+                  zIndex: 10,
+                  filter: 'drop-shadow(0,16px 40px rgba(0,0,0,0.65)',
+                  transition: "filter 200ms ease"
+                }}
+                loading="lazy"
+                />
+
+                <div className="pointer-events-none absolute inset-0"
+                style={{
+                  zIndex: 11,
+                  background: "linear-gradient(180deg, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0) 40%)"
+                }}
+                >
+
+                </div>
+              </div>
+
 
           </div>
         ))}
