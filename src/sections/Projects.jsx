@@ -6,6 +6,7 @@ import img2 from "../assets/img2.png";
 import photo2 from "../assets/photo2.png";
 import img3 from "../assets/img3.png";
 import photo3 from "../assets/photo3.png";
+import { AnimatePresence, useMotionValueEvent, useScroll, motion } from "framer-motion";
 
 const useIsMobile = (query = "(max-width: 639px)") => {
   const [isMobile, setIsMobile] = useState(
@@ -50,8 +51,61 @@ export default function Projects(){
   [isMobile]
 );
 
+const {scrollYProgress} = useScroll({
+  target: sceneRef,
+  offset: ["start start", "end end"]
+})
+const thresholds = projects.map((_,i) => (i+1)/projects.length);
+const [activeIndex, setActiveIndex] = useState(0);
+
+useMotionValueEvent(scrollYProgress, "change", (v) => {
+  const idx = thresholds.findIndex((t) => v <= t);
+  setActiveIndex(idx === -1 ? thresholds.length -1 : idx)
+});
+
+const activeProject = projects[activeIndex];
+
   return(
-    <section id="projects" className="relative text-white">
+    <section id="projects"
+    ref={sceneRef}
+    className="relative text-white"
+    style={{
+      height: `${100*projects.length}vh`,
+      backgroundColor: activeProject.bgColor,
+      transition: "background-color 400ms ease"
+    }}
+    >
+
+    <div className="sticky top-0 h-screen flex flex-col items-center justify-center">
+
+      <h2 className={`text-3xl font-semibold z-10 text-center ${
+        isMobile ? "mt-4" : "mt-8"
+        }`}>
+        My Work
+      </h2>
+
+      <div className={`relative w-full flex-1 flex items-center justify-center ${
+        isMobile ? "-mt-4" : ""
+        }`}>
+        {projects.map((project, idx) => (
+          <div key={project.title}
+          className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ${
+            activeIndex === idx ? "opacity:100 z-20" : "opacity-0 z-0 sm:z-10"
+            }`}
+            style={{width: '85%', maxWidth: '1200px'}}
+          >
+            <AnimatePresence mode="wait">
+              {activeIndex === idx && (
+                <motion.h3>
+                    {project.title}
+                </motion.h3>
+              )}
+            </AnimatePresence>
+
+          </div>
+        ))}
+      </div>
+    </div>
 
     </section>
   )
