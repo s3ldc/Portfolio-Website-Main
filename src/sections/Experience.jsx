@@ -1,11 +1,9 @@
-import React from 'react'
 
-const Experience = () => {
-  return (
-    <div className='w-full h-screen'>
-      Experience
-    </div>
+
+export default function Experience(){
+  return(
+    <section id="experience" className="relative bg-black text-white">
+
+    </section>
   )
 }
-
-export default Experience
