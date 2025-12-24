@@ -1,5 +1,5 @@
-import { delay, useTransform } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useTransform, motion, useScroll } from "framer-motion";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 const experiences = [
   {
@@ -92,7 +92,19 @@ export default function Experience() {
 
   useEffect(() => {
     const checkMobile = () => setIsMoile(window,innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile);
+  }, [])
+
+  const SCENE_HEIGHT_VH = isMobile ? 160*experiences.length : 120*experiences.length;
+
+  const {scrollYProgress} = useScroll({
+    target: sceneRef,
+    offset: ['start start', 'end end']
   })
+
+  const thresholds = useMemo(() => experiences.map((_, i) => (i+1) /experiences.length),[])
 
   return (
     <section id="experience" className="relative bg-black text-white"></section>
