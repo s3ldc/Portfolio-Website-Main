@@ -2,13 +2,13 @@ import { useTransform, motion, useScroll } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 const experiences = [
-  {
-    role: "Web Developer Intern",
-    company: "ExclCloud",
-    duration: "Dec 2024 – Feb 2025",
-    description:
-      "Collaborated with cross-functional teams to build high-performance SvelteKit applications for 1,200+ users, delivering automation features that reduced latency by 22%, cut meeting coordination time by 30%, and increased employee engagement by 40%.",
-  },
+  // {
+  //   role: "Web Developer Intern",
+  //   company: "ExclCloud",
+  //   duration: "Dec 2024 – Feb 2025",
+  //   description:
+  //     "Collaborated with cross-functional teams to build high-performance SvelteKit applications for 1,200+ users, delivering automation features that reduced latency by 22%, cut meeting coordination time by 30%, and increased employee engagement by 40%.",
+  // },
   {
     role: "Web Developer Intern",
     company: "ExclCloud",
@@ -128,8 +128,19 @@ export default function Experience() {
                 </motion.div>
 
                 </div>
-                <div>
-                  
+                <div className="relative flex justify-between mt-0">
+                  {experiences.map((exp, idx) => (
+
+                    <ExperienceItem
+                    key={idx}
+                    exp={exp}
+                    idx={idx}
+                    start={idx === 0 ? 0 : thresholds[idx-1]}
+                    end={thresholds[idx]}
+                    scrollYProgress={scrollYProgress}
+                    layout='desktop'
+                    />
+                  ))}
                 </div>
               </div>
             )}
