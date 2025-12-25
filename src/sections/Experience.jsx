@@ -105,8 +105,11 @@ export default function Experience() {
   })
 
   const thresholds = useMemo(() => experiences.map((_, i) => (i+1) /experiences.length),[])
+  const lineSize = useTransform(scrollYProgress, (v) => `${v*100}%`)
 
   return (
-    <section id="experience" className="relative bg-black text-white"></section>
+    <section id="experience" className="relative bg-black text-white">
+
+    </section>
   );
 }
