@@ -88,10 +88,10 @@ function ExperienceItem({exp, idx, start, end, scrollYProgress, layout}){
 export default function Experience() {
 
   const sceneRef = useRef(null);
-  const [isMobile, setIsMoile] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const checkMobile = () => setIsMoile(window,innerWidth < 768);
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
     window.addEventListener('resize', checkMobile)
     return () => window.removeEventListener('resize', checkMobile);
@@ -109,7 +109,34 @@ export default function Experience() {
 
   return (
     <section id="experience" className="relative bg-black text-white">
+      <div ref={sceneRef}
+      style={{height: `${SCENE_HEIGHT_VH}vh`, minHeight: '120vh'}}
+      className="relative"
+      >
+        <div className="sticky top-0 h-screen flex flex-col">
+          <h2 className="text-4xl sm:text-5xl font-semibold mt-5 text-center">
+            Experience
+          </h2>
+          <div className="flex flex-1 items-center justify-center px-6 pb-10">
+            {!isMobile && (
+              <div className="relative w-full max-w-7xl">
+                <div className="relative h-[6px] bg-white/15 rounded">
+                <motion.div className="absolute left-0 top-0 h-[6px] bg-white rounded origin-left"
+                style={{width: lineSize}}
+                >
 
+                </motion.div>
+
+                </div>
+                <div>
+                  
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+
+      </div>
     </section>
   );
 }
