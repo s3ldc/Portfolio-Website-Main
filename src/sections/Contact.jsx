@@ -160,6 +160,11 @@ export default function Contact(){
               {errors.idea && <p className="text-red-500 text-xs">{errors.idea}</p>}
             </div>
 
+            {status && (
+              <p className={`text-sm ${status === "success" ? "text-green-400" : status === "error" ? "text-red-400" : "text-yellow-400"}`}>
+                {status === "sending" ? "Sending..." : status === "success" ? "Message sent successfully!" : "Failed to send message. Please try again later."}
+              </p>
+            )}
           </form>
         </motion.div>
 
