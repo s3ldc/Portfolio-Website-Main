@@ -27,6 +27,16 @@ export default function Contact(){
     if(errors[name]) setErrors((p) => ({...p, [name] : ""}))
   }
 
+  const validateForm = () => {
+    const required = ["name", "email", "service", "idea"];
+    const newErrors = {};
+    required.forEach((f) => !formData[f].trim() && (newErrors[f] = "Fill this field"));
+    if(formData.service !== "Other" && !formData.budget.trim())
+      newErrors.budget = "Fill this field";
+  setErrors(newErrors);
+  return !Object.keys(newErrors).length;
+  }
+
   return(
     <section id="contact" className="w-full min-h-screen relative bg-black overflow-hidden text-white py-20 px-6 md:px-20 flex flex-col md:flex-row items-center gap-10">
       <ParticlesBackground/>
