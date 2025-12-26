@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ParticlesBackground from "../components/ParticlesBackground";
+import emailjs from "@emailjs/browser";
 
 
 const SERVICE_ID = import.meta.env.VITE_SERVICE_ID;
@@ -35,6 +36,35 @@ export default function Contact(){
       newErrors.budget = "Fill this field";
   setErrors(newErrors);
   return !Object.keys(newErrors).length;
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if(!validateForm()) return;
+    setStatus("Sending...");
+    try {
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          ...formData,
+          from_name : formData.name,
+          reply_to : formData.email,
+        },
+        PUBLIC_KEY
+      );
+      setStatus("Message sent successfully!");
+      setFormData({
+        name: "",
+        email: "",
+        service: "",
+        budget: "",
+        idea: "",
+      })
+    } catch (error) {
+      console.error("EmailJS Error: ", error);
+      setStatus("Failed to send message. Please try again later.");
+    }
   }
 
   return(
