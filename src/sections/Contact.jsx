@@ -136,6 +136,19 @@ export default function Contact(){
               {errors.service && <p className="text-red-500 text-xs">{errors.service}</p>}
             </div>
 
+            {formData.service && formData.service !== "Others" && (
+              <div className="flex flex-col">
+                <label className="mb-1">Budget <span className="text-red-500">*</span></label>
+                <input type="text"
+                name="budget"
+                placeholder="Your Budget"
+                onChange={handleChange}
+                value={formData.budget}
+                className={`p-3 rounded-md bg-white/10 border ${errors.service ? "border-red-500" : "border-gray-500"} text-white focus:border-blue-500`}/>
+                {errors.budget && <p className="text-red-500 text-xs">{errors.budget}</p>}
+              </div>
+            )}
+
           </form>
         </motion.div>
 
