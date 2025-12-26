@@ -149,6 +149,17 @@ export default function Contact(){
               </div>
             )}
 
+            <div className="flex flex-col">
+              <label className="mb-1">Explain Your Idea <span className="text-red-500">*</span></label>
+              <textarea name="idea"
+              rows={5}
+              placeholder="Enter Your Idea"
+              value={formData.idea}
+              onChange={handleChange}
+              className={`p-3 rounded-md bg-white/10 border ${errors.service ? "border-red-500" : "border-gray-500"} text-white focus:border-blue-500`}></textarea>
+              {errors.idea && <p className="text-red-500 text-xs">{errors.idea}</p>}
+            </div>
+
           </form>
         </motion.div>
 
