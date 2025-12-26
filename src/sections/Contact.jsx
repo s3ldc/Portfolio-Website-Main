@@ -120,7 +120,21 @@ export default function Contact(){
               {errors.email && <p className="text-red-500 text-xs">{errors.email}</p>}
             </div>
 
-            
+            <div className="flex flex-col">
+              <label className="mb-1">Service Needed <span className="text-red-500">*</span></label>
+              <select name="service"
+              value={formData.service}
+              onChange={handleChange}
+              className={`p-3 rounded-md bg-white/10 border ${errors.service ? "border-red-500" : "border-gray-500"} text-white focus:border-blue-500`}>
+                <option value="" disabled>
+                  Something in Mind?
+                </option>
+                <option value="Web Development" className="text-black">Web Development</option>
+                <option value="Data Analytics" className="text-black">Data Analytics</option>
+                <option value="Others" className="text-black">Others</option>
+              </select>
+              {errors.service && <p className="text-red-500 text-xs">{errors.service}</p>}
+            </div>
 
           </form>
         </motion.div>
