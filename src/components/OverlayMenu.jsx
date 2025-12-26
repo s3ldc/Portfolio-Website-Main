@@ -19,7 +19,7 @@ export default function OverlayMenu({ isOpen, onClose }) {
           <button
             onClick={onClose}
             className="absolute top-6 right-6 text-white text-3xl"
-            area-label="Close Menu"
+            aria-label="Close Menu"
           >
             <FiX />
           </button>
@@ -31,7 +31,7 @@ export default function OverlayMenu({ isOpen, onClose }) {
               "Skills",
               "Projects",
               "Experience",
-              "Testimonials",
+              // "Testimonials",
               "Contact",
             ].map((item, index) => (
               <motion.li
@@ -42,7 +42,7 @@ export default function OverlayMenu({ isOpen, onClose }) {
               >
                 <a
                   href={`#${item.toLowerCase()}`}
-                  onClick={onclose}
+                  onClick={onClose}
                   className="text-4xl text-white font-semibold hover:text-pink-400 transition-colors duration-300"
                 >
                   {item}
