@@ -23,6 +23,14 @@ const experiences = [
     description:
       "Developed an automated CSV import and PDF report generation system with an admin dashboard, reducing manual workload by 95% across 500+ records, achieving 100% data accuracy, and improving data retrieval speed by 70%.",
   },
+  {
+  role: "Freelance Frontend / Chatbot Developer",
+  company: "IndoGerman Education Consultancy",
+  duration: "2026",
+  description:
+    "Developed a lead-gated admissions chatbot with personalized flows, Zoom counseling integration, and rescue logic, reducing student drop-offs and improving live session participation for prospective applicants.",
+},
+
 ];
 
 function ExperienceItem({ exp, idx, start, end, scrollYProgress, layout }) {
