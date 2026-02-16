@@ -43,8 +43,8 @@ export default function Projects() {
         image: isMobile ? photo1 : img1,
       },
       {
-        title: "Student Management",
-        link: "https://github.com/s3ldc/StudentManagementSystem",
+        title: "Order Management",
+        link: "https://reera-order-management.vercel.app/",
         bgColor: "#1F2933",
         image: isMobile ? photo2 : img2,
       },
