@@ -14,19 +14,22 @@ import {
 } from "framer-motion";
 
 const useIsMobile = (query = "(max-width: 639px)") => {
-  const [isMobile, setIsMobile] = useState(
-    typeof window !== "undefined" && window.matchMedia(query).matches
-  );
+  const getMatch = () =>
+    typeof window !== "undefined" ? window.matchMedia(query).matches : false;
+
+  const [isMobile, setIsMobile] = useState(getMatch);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
+
     const mql = window.matchMedia(query);
     const handler = (e) => setIsMobile(e.matches);
 
     mql.addEventListener("change", handler);
-    setIsMobile(mql.matches);
+
     return () => mql.removeEventListener("change", handler);
   }, [query]);
+
   return isMobile;
 };
 
@@ -55,7 +58,7 @@ export default function Projects() {
         image: isMobile ? photo3 : img3,
       },
     ],
-    [isMobile]
+    [isMobile],
   );
 
   const { scrollYProgress } = useScroll({
